@@ -1,0 +1,6 @@
+. /etc/os-release
+curl -sSL https://packages.osrfoundation.org/gazebo.gpg > /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg &
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $UBUNTU_CODENAME main" > /etc/apt/sources.list.d/gazebo-stable.list &
+wait
+apt-get -y update
+apt-get -y install libgazebo11 gazebo11

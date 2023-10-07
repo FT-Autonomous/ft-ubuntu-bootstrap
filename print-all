@@ -1,0 +1,26 @@
+cat <<EOF
+### Get Universe Repository ###
+$(<get-universe-repository)
+
+### Update ###
+apt-get -y update
+
+## Get Prerequisite Commands ##
+$(<get-prerequisites)
+
+### Get ROS ###
+$(<get-ros)
+
+### Get Gazebo ###
+$(<get-gazebo)
+
+### Get EUFS ###
+$(<get-eufs)
+
+### Get rosdeps ###
+$(<get-rosdeps)
+
+### Build ... ###
+. /opt/ros/galactic/setup.bash
+colcon build --symlink-install
+EOF

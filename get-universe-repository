@@ -1,0 +1,8 @@
+. /etc/os-release
+grep -qRh '^deb.*universe' /etc/apt/sources.list* || >/etc/apt/sources.list.d/$UBUNTU_CODENAME-universe.list cat <<EOF
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://archive.ubuntu.com/ubuntu/ $UBUNTU_CODENAME universe
+deb http://archive.ubuntu.com/ubuntu/ $UBUNTU_CODENAME-updates universe
+EOF

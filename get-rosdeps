@@ -1,0 +1,4 @@
+. /opt/ros/galactic/setup.sh
+rosdep init
+rosdep update --rosdistro galactic
+rosdep install -y --ignore-src --from-paths .

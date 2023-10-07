@@ -1,0 +1,13 @@
+git clone https://gitlab.com/eufs/eufs_sim &
+git clone https://gitlab.com/eufs/eufs_msgs &
+git clone https://gitlab.com/eufs/eufs_rviz_plugins &
+if [ ! -e ~/.bashrc ] || ! grep EUFS_MASTER ~/.bashrc
+then
+        >>~/.bashrc cat <<-EOF
+	# Added during initial setup
+	alias .r='. install/setup.bash'
+	alias ros2init='. /opt/ros/galactic/setup.bash'
+	export EUFS_MASTER=$(realpath .)
+EOF
+fi &
+wait
