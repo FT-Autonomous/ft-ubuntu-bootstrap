@@ -4,6 +4,20 @@ This repository is a set of tools meant to speed up the FTA onboarding process.
 
 # WSL
 
+If you are runnning Ubuntu 20.04:
+
+```
+export ROSDISTRO=galactic
+```
+
+If you are runnning ubuntu 22.04:
+
+```
+export ROSDISTRO=humble
+```
+
+Once you have done that, you can run the following commmands:
+
 ```
 mkdir -p ~/colcon_ws && cd ~/colcon_ws
 sudo sh get-prerequisites
@@ -27,7 +41,7 @@ You need to run the simulator with the `LIBGL_ALWAYS_SOFTWARE` environment varia
 This looks like:
 
 ```
-LIBGL_ALWAYS_SOFTWARE=1 ros2 launch eufs_launcehr eufs_launcher.launch.py
+LIBGL_ALWAYS_SOFTWARE=1 ros2 launch eufs_launcher eufs_launcher.launch.py
 ```
 
 # Docker
