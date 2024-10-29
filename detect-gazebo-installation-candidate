@@ -1,0 +1,1 @@
+apt-cache search -n '^gazebo[0-9]*$' | perl -nle '$version=$1if(/gazebo([0-9]*)?/&&$version<$1);END{print"gazebo$version"}'

@@ -1,3 +1,5 @@
+export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
+
 cat <<EOF
 ### Get Universe Repository ###
 $(<get-universe-repository)
@@ -21,6 +23,6 @@ $(<get-eufs)
 $(<get-rosdeps)
 
 ### Build ... ###
-. /opt/ros/galactic/setup.bash
+. /opt/ros/$ROSDISTRO/setup.bash
 colcon build --symlink-install
 EOF

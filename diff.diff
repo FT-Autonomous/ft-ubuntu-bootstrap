@@ -1,0 +1,487 @@
+diff --git a/eufs_launcher/config/default.rviz b/eufs_launcher/config/default.rviz
+index ebb6c44..adeedc7 100644
+--- a/eufs_launcher/config/default.rviz
++++ b/eufs_launcher/config/default.rviz
+@@ -1,14 +1,21 @@
+ Panels:
+   - Class: rviz_common/Displays
+-    Help Height: 78
++    Help Height: 90
+     Name: Displays
+     Property Tree Widget:
+       Expanded:
+         - /Global Options1
+         - /Status1
+         - /RobotModel1/Description Topic1
+-      Splitter Ratio: 0.5
+-    Tree Height: 719
++        - /Fusion Cones1
++        - /Fusion Cones1/Status1
++        - /Left Camera Cones1/Status1
++        - /Right Camera Cones1
++        - /TF1
++        - /TF1/Tree1
++        - /Pose1
++      Splitter Ratio: 0.47740668058395386
++    Tree Height: 658
+   - Class: rviz_common/Selection
+     Name: Selection
+   - Class: rviz_common/Tool Properties
+@@ -80,11 +87,6 @@ Visualization Manager:
+           Show Axes: false
+           Show Trail: false
+           Value: true
+-        imu_base_link:
+-          Alpha: 1
+-          Show Axes: false
+-          Show Trail: false
+-          Value: true
+         left_front_wheel:
+           Alpha: 1
+           Show Axes: false
+@@ -113,6 +115,16 @@ Visualization Manager:
+           Alpha: 1
+           Show Axes: false
+           Show Trail: false
++        sbg_base_link:
++          Alpha: 1
++          Show Axes: false
++          Show Trail: false
++          Value: true
++        sbg_imu_base_link:
++          Alpha: 1
++          Show Axes: false
++          Show Trail: false
++          Value: true
+         velodyne:
+           Alpha: 1
+           Show Axes: false
+@@ -132,6 +144,11 @@ Visualization Manager:
+           Alpha: 1
+           Show Axes: false
+           Show Trail: false
++        zed_imu_base_link:
++          Alpha: 1
++          Show Axes: false
++          Show Trail: false
++          Value: true
+         zed_left_camera_frame:
+           Alpha: 1
+           Show Axes: false
+@@ -148,12 +165,17 @@ Visualization Manager:
+           Alpha: 1
+           Show Axes: false
+           Show Trail: false
++      Mass Properties:
++        Inertia: false
++        Mass: false
+       Name: RobotModel
+       TF Prefix: ""
+       Update Interval: 0
+       Value: true
+       Visual Enabled: true
+     - Class: eufs_rviz_plugins/ConeArrayWithCovariance
++      Color: 200; 200; 200
++      Color Display: Cone
+       Enabled: false
+       Name: Ground Truth Cones
+       Namespaces:
+@@ -166,18 +188,23 @@ Visualization Manager:
+         Value: /ground_truth/cones
+       Value: false
+     - Class: eufs_rviz_plugins/ConeArrayWithCovariance
+-      Enabled: false
++      Color: 200; 200; 200
++      Color Display: Cone
++      Enabled: true
+       Name: Fusion Cones
+       Namespaces:
+-        {}
++        cone: true
++        covariance: true
+       Topic:
+         Depth: 5
+         Durability Policy: Volatile
+         History Policy: Keep Last
+         Reliability Policy: Reliable
+         Value: /cones
+-      Value: false
++      Value: true
+     - Class: eufs_rviz_plugins/ConeArrayWithCovariance
++      Color: 200; 200; 200
++      Color Display: Cone
+       Enabled: true
+       Name: Left Camera Cones
+       Namespaces:
+@@ -188,33 +215,144 @@ Visualization Manager:
+         Durability Policy: Volatile
+         History Policy: Keep Last
+         Reliability Policy: Reliable
+-        Value: /camera_0/cones
++        Value: /map
+       Value: true
+     - Class: eufs_rviz_plugins/ConeArrayWithCovariance
+-      Enabled: true
++      Color: 200; 200; 200
++      Color Display: Cone
++      Enabled: false
+       Name: Right Camera Cones
+       Namespaces:
+-        cone: true
+-        covariance: true
++        {}
+       Topic:
+         Depth: 5
+         Durability Policy: Volatile
+         History Policy: Keep Last
+         Reliability Policy: Reliable
+         Value: /camera_1/cones
+-      Value: true
++      Value: false
+     - Class: eufs_rviz_plugins/WaypointArrayStamped
+-      Enabled: false
++      Color: 100; 204; 153
++      Enabled: true
+       Name: WaypointArrayStamped
+       Namespaces:
+-        {}
++        waypoint: true
+       Topic:
+         Depth: 5
+         Durability Policy: Volatile
+         History Policy: Keep Last
+         Reliability Policy: Reliable
+         Value: /trajectory
+-      Value: false
++      Value: true
++    - Class: rviz_default_plugins/TF
++      Enabled: true
++      Frame Timeout: 15
++      Frames:
++        All Enabled: true
++        base_footprint:
++          Value: true
++        chassis:
++          Value: true
++        gps_base_link:
++          Value: true
++        left_front_wheel:
++          Value: true
++        left_rear_wheel:
++          Value: true
++        left_steering_hinge:
++          Value: true
++        odom:
++          Value: true
++        right_front_wheel:
++          Value: true
++        right_rear_wheel:
++          Value: true
++        right_steering_hinge:
++          Value: true
++        sbg_base_link:
++          Value: true
++        sbg_imu_base_link:
++          Value: true
++        velodyne:
++          Value: true
++        velodyne_base_link:
++          Value: true
++        zed_camera_center:
++          Value: true
++        zed_depth_camera_frame:
++          Value: true
++        zed_imu_base_link:
++          Value: true
++        zed_left_camera_frame:
++          Value: true
++        zed_left_camera_optical_frame:
++          Value: true
++        zed_right_camera_frame:
++          Value: true
++        zed_right_camera_optical_frame:
++          Value: true
++      Marker Scale: 1
++      Name: TF
++      Show Arrows: true
++      Show Axes: true
++      Show Names: false
++      Tree:
++        base_footprint:
++          chassis:
++            gps_base_link:
++              {}
++            left_rear_wheel:
++              {}
++            left_steering_hinge:
++              left_front_wheel:
++                {}
++            right_rear_wheel:
++              {}
++            right_steering_hinge:
++              right_front_wheel:
++                {}
++            sbg_base_link:
++              {}
++            sbg_imu_base_link:
++              {}
++            velodyne_base_link:
++              velodyne:
++                {}
++            zed_camera_center:
++              zed_depth_camera_frame:
++                {}
++              zed_left_camera_frame:
++                zed_left_camera_optical_frame:
++                  {}
++              zed_right_camera_frame:
++                zed_right_camera_optical_frame:
++                  {}
++            zed_imu_base_link:
++              {}
++        odom:
++          {}
++      Update Interval: 0
++      Value: true
++    - Alpha: 1
++      Axes Length: 1
++      Axes Radius: 0.10000000149011612
++      Class: rviz_default_plugins/Pose
++      Color: 255; 25; 0
++      Enabled: true
++      Head Length: 10
++      Head Radius: 7
++      Name: Pose
++      Shaft Length: 1
++      Shaft Radius: 5
++      Shape: Arrow
++      Topic:
++        Depth: 5
++        Durability Policy: Volatile
++        Filter size: 10
++        History Policy: Keep Last
++        Reliability Policy: Reliable
++        Value: /steering_angle
++      Value: true
+   Enabled: true
+   Global Options:
+     Background Color: 48; 48; 48
+@@ -260,26 +398,26 @@ Visualization Manager:
+   Value: true
+   Views:
+     Current:
+-      Class: rviz_default_plugins/Orbit
+-      Distance: 8.5
++      Class: rviz_default_plugins/ThirdPersonFollower
++      Distance: 104.67137908935547
+       Enable Stereo Rendering:
+         Stereo Eye Separation: 0.05999999865889549
+         Stereo Focal Distance: 1
+         Swap Stereo Eyes: false
+         Value: false
+       Focal Point:
+-        X: 2
+-        Y: 0
+-        Z: 0
++        X: 7.3718109130859375
++        Y: -16.12389373779297
++        Z: 6.181528442539275e-05
+       Focal Shape Fixed Size: true
+       Focal Shape Size: 0.05000000074505806
+       Invert Z Axis: false
+       Name: Current View
+       Near Clip Distance: 0.009999999776482582
+-      Pitch: 0.4000000059604645
+-      Target Frame: <Fixed Frame>
+-      Value: Orbit (rviz_default_plugins)
+-      Yaw: 3.1414999961853027
++      Pitch: 1.299796223640442
++      Target Frame: odom
++      Value: ThirdPersonFollower (rviz_default_plugins)
++      Yaw: 3.0558369159698486
+     Saved:
+       - Class: rviz_default_plugins/Orbit
+         Distance: 8.5
+@@ -304,10 +442,10 @@ Visualization Manager:
+ Window Geometry:
+   Displays:
+     collapsed: false
+-  Height: 1016
++  Height: 987
+   Hide Left Dock: false
+-  Hide Right Dock: false
+-  QMainWindow State: 000000ff00000000fd0000000400000000000001560000035afc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000035a000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f0000035afc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d0000035a000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007380000003efc0100000002fb0000000800540069006d0065010000000000000738000002eb00fffffffb0000000800540069006d00650100000000000004500000000000000000000004c70000035a00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
++  Hide Right Dock: true
++  QMainWindow State: 000000ff00000000fd00000004000000000000016300000331fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000007100fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000004700000331000000f900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010400000331fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000004700000331000000c500fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004620000003cfc0100000002fb0000000800540069006d00650100000000000004620000030300fffffffb0000000800540069006d00650100000000000004500000000000000000000002f70000033100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+   Selection:
+     collapsed: false
+   Time:
+@@ -315,7 +453,7 @@ Window Geometry:
+   Tool Properties:
+     collapsed: false
+   Views:
+-    collapsed: false
+-  Width: 1848
+-  X: 72
+-  Y: 27
++    collapsed: true
++  Width: 1122
++  X: 10
++  Y: 53
+diff --git a/eufs_launcher/src/eufs_launcher/LauncherModule.py b/eufs_launcher/src/eufs_launcher/LauncherModule.py
+index ce1f2a8..429c3ae 100644
+--- a/eufs_launcher/src/eufs_launcher/LauncherModule.py
++++ b/eufs_launcher/src/eufs_launcher/LauncherModule.py
+@@ -218,11 +218,11 @@ class EUFSLauncher(Plugin):
+                     new_width = geom.width() * scalar_multiplier
+                 else:
+                     new_width = geom.width() * scalar_multiplier + 200
+-                widget.setGeometry(
++                widget.setGeometry(*(int(x) for x in (
+                     geom.x() * scalar_multiplier,
+                     geom.y() * scalar_multiplier,
+                     new_width,
+-                    geom.height() * (scalar_multiplier),
++                    geom.height() * (scalar_multiplier),))
+                 )
+ 
+         # If use_gui is false, we jump straight into launching the track
+diff --git a/eufs_plugins/CMakeLists.txt b/eufs_plugins/CMakeLists.txt
+index 56ec698..5b0b550 100644
+--- a/eufs_plugins/CMakeLists.txt
++++ b/eufs_plugins/CMakeLists.txt
+@@ -31,6 +31,7 @@ find_package(std_msgs REQUIRED)
+ find_package(std_srvs REQUIRED)
+ find_package(tf2 REQUIRED)
+ find_package(tf2_ros REQUIRED)
++find_package(tf2_geometry_msgs REQUIRED)
+ find_package(eufs_msgs REQUIRED)
+ find_package(eufs_models REQUIRED)
+ find_package(ackermann_msgs REQUIRED)
+diff --git a/eufs_plugins/gazebo_race_car_model/src/gazebo_ros_race_car_model.cpp b/eufs_plugins/gazebo_race_car_model/src/gazebo_ros_race_car_model.cpp
+index 906e30d..f12bc87 100644
+--- a/eufs_plugins/gazebo_race_car_model/src/gazebo_ros_race_car_model.cpp
++++ b/eufs_plugins/gazebo_race_car_model/src/gazebo_ros_race_car_model.cpp
+@@ -544,8 +544,12 @@ void RaceCarModelPlugin::publishTf() {
+   transform_stamped.header.stamp.nanosec = _last_sim_time.nsec;
+   transform_stamped.header.frame_id = _reference_frame;
+   transform_stamped.child_frame_id = _robot_frame;
+-  tf2::convert(transform, transform_stamped.transform);
+-
++  transform_stamped.transform.translation.x = state_noisy.x;
++  transform_stamped.transform.translation.y = state_noisy.y;
++  transform_stamped.transform.rotation.w = q.w();
++  transform_stamped.transform.rotation.x = q.x();
++  transform_stamped.transform.rotation.y = q.y();
++  transform_stamped.transform.rotation.z = q.z();
+   _tf_br->sendTransform(transform_stamped);
+ }
+ 
+diff --git a/eufs_plugins/gazebo_simulate_bounding_boxes/CMakeLists.txt b/eufs_plugins/gazebo_simulate_bounding_boxes/CMakeLists.txt
+index 7720784..3e47841 100644
+--- a/eufs_plugins/gazebo_simulate_bounding_boxes/CMakeLists.txt
++++ b/eufs_plugins/gazebo_simulate_bounding_boxes/CMakeLists.txt
+@@ -2,6 +2,8 @@ add_library(gazebo_simulate_bounding_boxes SHARED
+   src/gazebo_simulate_bounding_boxes.cpp)
+ 
+ ament_target_dependencies(gazebo_simulate_bounding_boxes
++  "tf2_ros"
++  "tf2_geometry_msgs"
+   "gazebo_dev"
+   "gazebo_ros"
+   "rclcpp"
+diff --git a/eufs_rqt/src/eufs_rqt/EUFSRobotSteeringGUI.py b/eufs_rqt/src/eufs_rqt/EUFSRobotSteeringGUI.py
+index ba8ae70..5896327 100755
+--- a/eufs_rqt/src/eufs_rqt/EUFSRobotSteeringGUI.py
++++ b/eufs_rqt/src/eufs_rqt/EUFSRobotSteeringGUI.py
+@@ -324,66 +324,66 @@ class EUFSRobotSteeringGUI(Plugin):
+         self._on_parameter_changed()
+ 
+     def _on_increase_linear_pressed(self):
+-        self._widget.linear_slider.setValue(
++        self._widget.linear_slider.setValue(int(
+             self._widget.linear_slider.value()
+-            + self._widget.linear_slider.singleStep())
++            + self._widget.linear_slider.singleStep()))
+ 
+     def _on_reset_linear_pressed(self):
+         self._widget.linear_slider.setValue(0)
+ 
+     def _on_decrease_linear_pressed(self):
+-        self._widget.linear_slider.setValue(
++        self._widget.linear_slider.setValue(int(
+             self._widget.linear_slider.value()
+-            - self._widget.linear_slider.singleStep())
++            - self._widget.linear_slider.singleStep()))
+ 
+     def _on_increase_angular_pressed(self):
+-        self._widget.angular_slider.setValue(
++        self._widget.angular_slider.setValue(int(
+             self._widget.angular_slider.value()
+-            + self._widget.angular_slider.singleStep())
++            + self._widget.angular_slider.singleStep()))
+ 
+     def _on_reset_angular_pressed(self):
+         self._widget.angular_slider.setValue(0)
+ 
+     def _on_decrease_angular_pressed(self):
+-        self._widget.angular_slider.setValue(
++        self._widget.angular_slider.setValue(int(
+             self._widget.angular_slider.value()
+-            - self._widget.angular_slider.singleStep())
++            - self._widget.angular_slider.singleStep()))
+ 
+     def _on_max_linear_changed(self, value):
+-        self._widget.linear_slider.setMaximum(
+-            value * EUFSRobotSteeringGUI.slider_factor)
++        self._widget.linear_slider.setMaximum(int(
++            value * EUFSRobotSteeringGUI.slider_factor))
+ 
+     def _on_min_linear_changed(self, value):
+-        self._widget.linear_slider.setMinimum(
+-            value * EUFSRobotSteeringGUI.slider_factor)
++        self._widget.linear_slider.setMinimum(int(
++            value * EUFSRobotSteeringGUI.slider_factor))
+ 
+     def _on_max_angular_changed(self, value):
+-        self._widget.angular_slider.setMaximum(
+-            value * EUFSRobotSteeringGUI.slider_factor)
++        self._widget.angular_slider.setMaximum(int(
++            value * EUFSRobotSteeringGUI.slider_factor))
+ 
+     def _on_min_angular_changed(self, value):
+-        self._widget.angular_slider.setMinimum(
+-            value * EUFSRobotSteeringGUI.slider_factor)
++        self._widget.angular_slider.setMinimum(int(
++            value * EUFSRobotSteeringGUI.slider_factor))
+ 
+     def _on_strong_increase_linear_pressed(self):
+-        self._widget.linear_slider.setValue(
++        self._widget.linear_slider.setValue(int(
+             self._widget.linear_slider.value()
+-            + self._widget.linear_slider.pageStep())
++            + self._widget.linear_slider.pageStep()))
+ 
+     def _on_strong_decrease_linear_pressed(self):
+-        self._widget.linear_slider.setValue(
++        self._widget.linear_slider.setValue(int(
+             self._widget.linear_slider.value()
+-            - self._widget.linear_slider.pageStep())
++            - self._widget.linear_slider.pageStep()))
+ 
+     def _on_strong_increase_angular_pressed(self):
+-        self._widget.angular_slider.setValue(
++        self._widget.angular_slider.setValue(int(
+             self._widget.angular_slider.value()
+-            + self._widget.angular_slider.pageStep())
++            + self._widget.angular_slider.pageStep()))
+ 
+     def _on_strong_decrease_angular_pressed(self):
+-        self._widget.angular_slider.setValue(
++        self._widget.angular_slider.setValue(int(
+             self._widget.angular_slider.value()
+-            - self._widget.angular_slider.pageStep())
++            - self._widget.angular_slider.pageStep()))
+ 
+     def _on_parameter_changed(self):
+         self._send_ackermann_drive_stamped(
