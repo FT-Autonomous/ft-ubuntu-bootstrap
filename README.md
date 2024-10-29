@@ -15,7 +15,12 @@ sudo bash ft-ubuntu-bootstrap/get-ros
 sudo bash ft-ubuntu-bootstrap/get-gazebo
 bash ft-ubuntu-bootstrap/get-eufs
 bash ft-ubuntu-bootstrap/get-rosdeps
-. /opt/ros/galactic/setup.bash
+```
+
+After that, start a new terminal:
+
+```
+. /opt/ros/$ROSDISTRO/setup.bash
 colcon build --symlink-install
 ```
 
