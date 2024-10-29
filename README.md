@@ -4,27 +4,17 @@ This repository is a set of tools meant to speed up the FTA onboarding process.
 
 # WSL
 
-If you are runnning Ubuntu 20.04:
+
+You can run the following commmands:
 
 ```
-export ROSDISTRO=galactic
-```
-
-If you are runnning ubuntu 22.04:
-
-```
-export ROSDISTRO=humble
-```
-
-Once you have done that, you can run the following commmands:
-
-```
-mkdir -p ~/colcon_ws && cd ~/colcon_ws
-sudo sh get-prerequisites
-sudo sh get-ros
-sudo sh get-gazebo
-sh get-eufs
-sh get-rosdeps
+mkdir -p ~/ft && cd ~/ft
+git clone https://github.com/FT-Autonomous/ft-ubuntu-bootstrap
+sudo bash ft-ubuntu-bootstrap/get-prerequisites
+sudo bash ft-ubuntu-bootstrap/get-ros
+sudo bash ft-ubuntu-bootstrap/get-gazebo
+bash ft-ubuntu-bootstrap/get-eufs
+bash ft-ubuntu-bootstrap/get-rosdeps
 . /opt/ros/galactic/setup.bash
 colcon build --symlink-install
 ```

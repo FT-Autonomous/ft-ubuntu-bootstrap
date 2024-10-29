@@ -1,3 +1,5 @@
+export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
+
 git clone https://gitlab.com/eufs/eufs_sim &
 git clone https://gitlab.com/eufs/eufs_msgs &
 git clone https://gitlab.com/eufs/eufs_rviz_plugins &
@@ -8,6 +10,13 @@ then
 	alias .r='. install/setup.bash'
 	alias ros2init='. /opt/ros/$ROSDISTRO/setup.bash'
 	export EUFS_MASTER=$(realpath .)
+	export ROSDISTRO=$ROSDISTRO
 EOF
 fi &
 wait
+
+# Apply Humble Patcherino
+if [[ "$ROSDISTRO" = "humble" ]]
+then
+	git -C eufs_sim apply $(realpath "`dirname "$0"`/diff.diff")
+fi

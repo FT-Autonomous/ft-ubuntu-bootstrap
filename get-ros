@@ -1,4 +1,5 @@
 . /etc/os-release
+export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
 export DEBIAN_FRONTEND=noninteractive
 curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -k > /usr/share/keyrings/ros-archive-keyring.gpg &
 curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc -k | apt-key add - &

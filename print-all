@@ -1,3 +1,5 @@
+export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
+
 cat <<EOF
 ### Get Universe Repository ###
 $(<get-universe-repository)
