@@ -1,1 +1,2 @@
+#!/bin/bash
 apt-cache search --names-only '^ros-(humble|galactic)-desktop$' | perl -nle '/ros-(.*)-desktop/ and print $1'

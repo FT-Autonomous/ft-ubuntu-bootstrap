@@ -1,3 +1,4 @@
+#!/bin/bash
 . /etc/os-release
 export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
 export DEBIAN_FRONTEND=noninteractive

@@ -1,3 +1,4 @@
+#!/bin/bash
 . /etc/os-release
 candidate=$("`dirname "$0"`/detect-gazebo-installation-candidate")
 curl -sSL https://packages.osrfoundation.org/gazebo.gpg > /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg &

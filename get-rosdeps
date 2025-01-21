@@ -1,3 +1,4 @@
+#!/bin/bash
 export ROSDISTRO=${ROSDISTRO:-$("`dirname "$0"`/detect-ros-distro")}
 . /opt/ros/$ROSDISTRO/setup.sh
 rosdep update --rosdistro $ROSDISTRO
