@@ -16,7 +16,8 @@ COPY ./get-gazebo .
 
 COPY ./detect-gazebo-installation-candidate .
 RUN ./get-gazebo
- 
+
+COPY ./diff.diff .
 COPY ./get-eufs .
 RUN ./get-eufs
   
