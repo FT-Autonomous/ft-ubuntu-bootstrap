@@ -71,3 +71,26 @@ To open a terminal in the docker container while it is running, use the command:
 ```
 docker exec -it ft -u $(whoami) "$SHELL"
 ```
+
+# Overlay Container Usage
+
+This project provides a convenient way to spin up a lightweight Linux overlay container using Docker Compose and a helper script.
+
+```bash
+python3 enter-overlay.py --workdir ~/ --shell bash humble
+```
+
+The `enter-overlay.py` script launches the Docker service defined in `docker-compose.yml` and opens an interactive shell inside the overlay container. You can customize the working directory and shell type via the `--workdir` and `--shell` flags.
+
+If you need to mount additional host directories inside the overlay container (for example, to access local code or configuration files), add them as volume mounts in your `docker-compose.yml`. For example:
+
+```yaml
+services:
+  overlay:
+    image: mersiohw/ft-ubuntu-bootstrap:latest
+    volumes:
+      - ./path/on/host:/path/in/container
+      - /another/host/path:/another/container/path
+```
+
+After updating `docker-compose.yml`, rerun the `enter-overlay.py` command to apply the new mounts.
