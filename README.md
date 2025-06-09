@@ -44,7 +44,7 @@ LIBGL_ALWAYS_SOFTWARE=1 ros2 launch eufs_launcher eufs_launcher.launch.py
 Build the base image:
 
 ```
-docker build -t ft/base -f base.Dockerfile .
+docker build -t mersiohw/ft-ubuntu-bootstrap -f base.Dockerfile .
 ```
 
 Build the vnc image:
