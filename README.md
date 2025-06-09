@@ -50,7 +50,7 @@ docker build -t ft/base -f base.Dockerfile .
 Build the vnc image:
 
 ```
-docker build -t ft/vnc vnc.Dockerfile .
+docker build -t ft/vnc -f vnc.Dockerfile .
 ```
 
 Run the VNC image:
