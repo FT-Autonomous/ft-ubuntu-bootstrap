@@ -22,7 +22,6 @@ environ["FT_COLCON_HOME"] = environ.get("FT_COLCON_HOME", f"{environ['HOME']}/ft
 environ["FT_CATKIN_HOME"] = environ.get("FT_CATKIN_HOME", f"{environ['HOME']}/catkin_ft")
 
 def get_docker_executable():
-    return "docker"
     if run(["which", "podman"], stderr=DEVNULL, stdout=DEVNULL).returncode == 0:
         return "podman"
     else:
