@@ -7,12 +7,15 @@ from os import environ, chdir, getcwd
 from pathlib import Path
 from os.path import exists
 from subprocess import PIPE, run, DEVNULL, Popen
+import logging
 from logging import getLogger, INFO
 from functools import cache
 import yaml
+from sys import stdout
 
 logger = getLogger("enter-overlay")
 logger.setLevel(INFO)
+logger.addHandler(logging.StreamHandler(stdout))
 
 environ["HOSTNAME"] = gethostname()
 environ["FT_COLCON_HOME"] = environ.get("FT_COLCON_HOME", f"{environ['HOME']}/ft")
@@ -58,11 +61,8 @@ def get_image_for_service(service):
         exit(1)
     
 def get_container_of_image(image):
-    print(image)
     resolved_image_id = loads(run([get_docker_executable(), "image", "inspect", image], stdout=PIPE).stdout)[0]["Id"]
-    print("RESOLVED:", resolved_image_id)
-    containers = loads(run(["curl", "--unix-socket", get_docker_socket(), "http://localhost/v1.24/containers/json"], stdout=PIPE).stdout)
-    print("CONTAINERS:", containers)
+    containers = loads(run(["curl", "--silent", "--unix-socket", get_docker_socket(), "http://localhost/v1.24/containers/json"], stdout=PIPE).stdout)
     for container in containers:
         if resolved_image_id in container["ImageID"]:
             return container
@@ -75,6 +75,7 @@ def main():
     parser.add_argument("--workdir", type=str)
     parser.add_argument("--jobless", action="store_const", const=True, dest="jobless", default=False)
     parser.add_argument("--raw", action="store_const", const=True, dest="raw")
+    parser.add_argument("--fresh", action="store_const", const=True, dest="fresh")
     args = parser.parse_args()
 
     original_directory = getcwd()
@@ -89,6 +90,12 @@ def main():
         return
 
     logger.warning(f"Using image '{image}'")
+
+    if args.fresh:
+        logger.info("Fresh option chosen. killing existing containers... 😳")
+        while container := get_container_of_image(image):
+            logger.info(f"killing container {container['Id']} 🩸🍴")
+            run([get_docker_executable(), "kill", container["Id"]])
     
     container = get_container_of_image(image)
 
