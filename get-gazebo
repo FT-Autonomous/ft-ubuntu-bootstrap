@@ -6,3 +6,4 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-
 wait
 apt-get -y update
 apt-get -y install lib${candidate}-dev ${candidate}
+rm -fr /var/lib/apt/lists/*

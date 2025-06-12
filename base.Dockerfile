@@ -3,8 +3,6 @@ WORKDIR /root/
 COPY ./get-universe-repository .
 RUN ./get-universe-repository
 
-RUN apt-get -y update
-
 COPY ./get-prerequisites .
 RUN ./get-prerequisites
 
