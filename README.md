@@ -24,7 +24,7 @@ After that, start a new terminal:
 colcon build --symlink-install
 ```
 
-Clone this private repository.
+Clone the private repository `FT-FSAI-23`.
 
 ```
 colcon build --symlink-install
