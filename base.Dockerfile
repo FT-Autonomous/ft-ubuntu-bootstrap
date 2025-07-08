@@ -10,10 +10,10 @@ COPY ./detect-ros-distro .
 COPY ./get-ros .
 RUN ./get-ros && rm -fr /var/lib/apt/lists/*
 
-COPY ./get-gazebo . && rm -fr /var/lib/apt/lists/*
+COPY ./get-gazebo .
 
 COPY ./detect-gazebo-installation-candidate .
-RUN ./get-gazebo
+RUN ./get-gazebo && rm -fr /var/lib/apt/lists/*
 
 COPY ./diff.diff .
 COPY ./get-eufs .
