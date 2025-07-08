@@ -13,4 +13,3 @@ apt-get -y install python3-pip python3-venv python3-sklearn python3-pandas pytho
 apt-get -y install ros-$ROSDISTRO-diagnostic-updater ros-$ROSDISTRO-angles
 apt-get -y install libpcap-dev libpcl-dev
 rosdep init
-rm -fr /var/lib/apt/lists/*

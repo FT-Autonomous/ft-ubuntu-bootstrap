@@ -4,13 +4,13 @@ COPY ./get-universe-repository .
 RUN ./get-universe-repository
 
 COPY ./get-prerequisites .
-RUN ./get-prerequisites
+RUN ./get-prerequisites && rm -rf /var/lib/apt/lists/*
 
 COPY ./detect-ros-distro .
 COPY ./get-ros .
-RUN ./get-ros
+RUN ./get-ros && rm -fr /var/lib/apt/lists/*
 
-COPY ./get-gazebo .
+COPY ./get-gazebo . && rm -fr /var/lib/apt/lists/*
 
 COPY ./detect-gazebo-installation-candidate .
 RUN ./get-gazebo
@@ -20,4 +20,4 @@ COPY ./get-eufs .
 RUN ./get-eufs
   
 COPY ./get-rosdeps .
-RUN ./get-rosdeps
+RUN ./get-rosdeps && rm -rf /var/lib/apt/lists/*
