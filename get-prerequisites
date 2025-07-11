@@ -1,3 +1,3 @@
 #!/bin/bash
 apt-get -y update
-apt-get -y install git curl git
+apt-get -y install git curl git zsh ripgrep neovim
