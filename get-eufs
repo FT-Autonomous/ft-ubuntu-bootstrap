@@ -9,6 +9,7 @@ then
         >>~/.bashrc cat <<-EOF
 	# Added during initial setup
 	alias .r='. install/setup.bash'
+	alias .w='cd ~/ft ; . install/setup.bash'
 	alias ros2init='. /opt/ros/$ROSDISTRO/setup.bash'
 	export EUFS_MASTER=$(realpath .)
 	export FT_CATKIN_HOME=$(realpath ~/catkin_ws)
