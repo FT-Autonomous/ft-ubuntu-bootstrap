@@ -10,6 +10,8 @@ COPY ./detect-ros-distro .
 COPY ./get-ros .
 RUN ./get-ros && rm -fr /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y python3-colcon-common-extensions
+
 COPY ./get-gazebo .
 
 COPY ./detect-gazebo-installation-candidate .
@@ -21,3 +23,6 @@ RUN ./get-eufs
   
 COPY ./get-rosdeps .
 RUN ./get-rosdeps && rm -rf /var/lib/apt/lists/*
+RUN ./get-rosdeps
+
+RUN apt-get update && apt-get install -y python3-colcon-common-extensions python3-colcon-ros python3-colcon-core python3-dev rsync screen ros-humble-catch-ros2:W
