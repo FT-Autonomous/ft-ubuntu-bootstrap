@@ -25,4 +25,6 @@ COPY ./get-rosdeps .
 RUN ./get-rosdeps && rm -rf /var/lib/apt/lists/*
 RUN ./get-rosdeps
 
-RUN apt-get update && apt-get install -y python3-colcon-common-extensions python3-colcon-ros python3-colcon-core python3-dev rsync screen ros-humble-catch-ros2:W
+RUN apt-get update && apt-get install -y python3-colcon-common-extensions python3-colcon-ros python3-colcon-core python3-dev rsync screen ros-humble-catch-ros2
+
+RUN apt update && apt install -y gedit
