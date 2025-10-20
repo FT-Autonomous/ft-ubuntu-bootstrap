@@ -47,13 +47,13 @@ Build the base image:
 docker build -t mersiohw/ft-ubuntu-bootstrap -f base.Dockerfile .
 ```
 
-Build the vnc image:
+[OPTIONAL] Build the vnc image:
 
 ```
 docker build -t ft/vnc -f vnc.Dockerfile .
 ```
 
-Run the VNC image:
+[OPTIONAL] Run the VNC image:
 
 ```
 docker run --name ft --rm -it -p 6900:6900 -v "$HOME:$HOME" -w "$HOME" ft/vnc \
