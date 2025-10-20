@@ -10,6 +10,10 @@ then
 	# Added during initial setup
 	alias .r='. install/setup.bash'
 	alias .w='cd ~/ft ; . install/setup.bash'
+    alias launchEUFS='ros2 launch eufs_launcher eufs_launcher.launch.py'
+    alias cbuildsym='colcon build --symlink-install'
+    alias cbuild='colcon build'
+    alias launchFT='ros2 launch ft_system system_sim.launch.py'
 	alias ros2init='. /opt/ros/$ROSDISTRO/setup.bash'
 	export EUFS_MASTER=$(realpath .)
 	export FT_CATKIN_HOME=$(realpath ~/catkin_ws)
