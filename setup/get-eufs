@@ -9,7 +9,7 @@ then
         >>~/.bashrc cat <<-EOF
 	# Added during initial setup
 	alias .r='. install/setup.bash'
-	alias .w='cd ~/ft ; . install/setup.bash'
+	alias .w='cd ~/ft-ubuntu-bootstrap ; . install/setup.bash'
     alias launchEUFS='ros2 launch eufs_launcher eufs_launcher.launch.py'
     alias cbuildsym='colcon build --symlink-install'
     alias cbuild='colcon build'
