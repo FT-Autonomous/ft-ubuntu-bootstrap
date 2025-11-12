@@ -4,30 +4,10 @@ This repository is a set of tools meant to speed up the FTA onboarding process.
 
 # WSL
 
-
-You can run the following commmands:
-
-```
-mkdir -p ~/ft && cd ~/ft
-git clone https://github.com/FT-Autonomous/ft-ubuntu-bootstrap
-sudo bash ft-ubuntu-bootstrap/get-prerequisites
-sudo bash ft-ubuntu-bootstrap/get-ros
-sudo bash ft-ubuntu-bootstrap/get-gazebo
-bash ft-ubuntu-bootstrap/get-eufs
-bash ft-ubuntu-bootstrap/get-rosdeps
-```
-
-After that, start a new terminal:
+You can run the following commmand:
 
 ```
-. /opt/ros/$ROSDISTRO/setup.bash
-colcon build --symlink-install
-```
-
-Clone the private repository `FT-FSAI-23`.
-
-```
-colcon build --symlink-install
+bash install.sh
 ```
 
 ## Specific Provisions for WSL 2
@@ -41,14 +21,13 @@ LIBGL_ALWAYS_SOFTWARE=1 ros2 launch eufs_launcher eufs_launcher.launch.py
 
 # Docker
 
-Build the base image:
+Build the base image in ft-ubuntu-bootstrap/setup:
 
 ```
 docker build -t mersiohw/ft-ubuntu-bootstrap -f base.Dockerfile .
 ```
 
-[OPTIONAL] Build the vnc image:
-
+[OPTIONAL] Build the vnc image from within the vnc-setup directory:
 ```
 docker build -t ft/vnc -f vnc.Dockerfile .
 ```
