@@ -2,32 +2,28 @@
 set -e  # stop on error
 set -o pipefail
 
+DIR="$PWD"
 MAIN_REPO=git@github.com:FT-Autonomous/FT-FSAI-23.git
 
 echo "FT AUTONOMOUS SETUP STARTED"
 
-if ! grep -qi ubuntu /etc/os-release; then
-    echo "This script is intended for Ubuntu-based systems."
-    echo "Press Ctrl+C to cancel or wait 5s to continue anyway..."
-    sleep 5
-fi
-
 echo "Installing prerequisites..."
-#sudo bash setup/get-prerequisites
+sudo bash setup/get-prerequisites
 
 echo "Installing ROS2..."
-#sudo bash setup/get-ros
+sudo bash setup/get-ros
 
 echo "Installing Gazebo..."
-#sudo bash setup/get-gazebo
+sudo bash setup/get-gazebo
 
 echo "Installing EUFS..."
-#bash setup/get-eufs
+bash setup/get-eufs
 
 echo "Installing ROS dependencies..."
-#bash setup/get-rosdeps
+bash setup/get-rosdeps
 
 ROS_SOURCE_LINE=". /opt/ros/humble/setup.bash"
+# shouldve been added in get-eufs but checks in case not 
 if ! grep -Fxq "$ROS_SOURCE_LINE" ~/.bashrc; then
     echo "$ROS_SOURCE_LINE" >> ~/.bashrc
     echo "Added ROS2 sourcing to ~/.bashrc"
@@ -44,14 +40,12 @@ else
     git submodule update --init --recursive
 fi
 
-#echo "→ Installing Python requirements..."
-#cd "FT-FSAI-23"
-#python3 -m pip install --upgrade pip
-#pip install -r requirements.txt
+echo "Installing Python requirements..."
+cd "FT-FSAI-23"
+python3 -m pip install --upgrade pip
+pip install -r requirements.txt
 
-MAX_RETRIES=3
-COUNT=1
-cd ~/ft/ft-ubuntu-bootstrap
+cd $DIR 
 echo "Building workspace using colcon..."
 colcon build --symlink-install || {
     echo "Build failed once, retrying..."
