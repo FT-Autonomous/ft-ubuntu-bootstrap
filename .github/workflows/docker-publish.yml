@@ -21,9 +21,10 @@ jobs:
       - name: Build and push base image
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: setup/base.Dockerfile
+          context: ./setup
+          file: ./setup/base.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ft-ubuntu-bootstrap:jammy
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/ft-ubuntu-bootstrap:jammy
           cache-to: type=inline
+
