@@ -22,7 +22,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: base.Dockerfile
+          file: setup/base.Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/ft-ubuntu-bootstrap:jammy
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/ft-ubuntu-bootstrap:jammy
