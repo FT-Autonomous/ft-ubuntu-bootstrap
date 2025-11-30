@@ -4,31 +4,14 @@ This repository is a set of tools meant to speed up the FTA onboarding process.
 
 # WSL
 
-
-You can run the following commmands:
-
-```
-mkdir -p ~/ft && cd ~/ft
-git clone https://github.com/FT-Autonomous/ft-ubuntu-bootstrap
-sudo bash ft-ubuntu-bootstrap/get-prerequisites
-sudo bash ft-ubuntu-bootstrap/get-ros
-sudo bash ft-ubuntu-bootstrap/get-gazebo
-bash ft-ubuntu-bootstrap/get-eufs
-bash ft-ubuntu-bootstrap/get-rosdeps
-```
-
-After that, start a new terminal:
+You can run the following commmand:
 
 ```
-. /opt/ros/$ROSDISTRO/setup.bash
-colcon build --symlink-install
+bash path/to/ft-ubuntu-bootstrap/install.sh # replace with actual path
 ```
+This will make the directory that you run this command from your Formula Trintiy workspace.
 
-Clone the private repository `FT-FSAI-23`.
-
-```
-colcon build --symlink-install
-```
+Note that one of the final steps is cloning the FT-FSAI-XX repository, you will need to set up GitHub ssh on your machine to allow this (also makes life a lot easier, you don't have enter your password for every authenticaed GitHub command). First [Generate an SSH Key and add it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and then [Add this key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
 ## Specific Provisions for WSL 2
 
@@ -41,14 +24,13 @@ LIBGL_ALWAYS_SOFTWARE=1 ros2 launch eufs_launcher eufs_launcher.launch.py
 
 # Docker
 
-Build the base image:
+Build the base image in ft-ubuntu-bootstrap/setup:
 
 ```
 docker build -t mersiohw/ft-ubuntu-bootstrap -f base.Dockerfile .
 ```
 
-[OPTIONAL] Build the vnc image:
-
+[OPTIONAL] Build the vnc image from within the vnc-setup directory:
 ```
 docker build -t ft/vnc -f vnc.Dockerfile .
 ```
