@@ -7,8 +7,9 @@ This repository is a set of tools meant to speed up the FTA onboarding process.
 You can run the following commmand:
 
 ```
-bash install.sh
+bash path/to/ft-ubuntu-bootstrap/install.sh # replace with actual path
 ```
+This will make the directory that you run this command from your Formula Trintiy workspace.
 
 Note that one of the final steps is cloning the FT-FSAI-XX repository, you will need to set up GitHub ssh on your machine to allow this (also makes life a lot easier, you don't have enter your password for every authenticaed GitHub command). First [Generate an SSH Key and add it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and then [Add this key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
