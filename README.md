@@ -10,6 +10,8 @@ You can run the following commmand:
 bash install.sh
 ```
 
+Note that one of the final steps is cloning the FT-FSAI-XX repository, you will need to set up GitHub ssh on your machine to allow this (also makes life a lot easier, you don't have enter your password for every authenticaed GitHub command). First [Generate an SSH Key and add it to the ssh-agent](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and then [Add this key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
 ## Specific Provisions for WSL 2
 
 You need to run the simulator with the `LIBGL_ALWAYS_SOFTWARE` environment variable set to `1`.
