@@ -69,7 +69,7 @@ if ! grep -Fxq "$ROS_SOURCE_LINE" ~/.bashrc; then
     echo "$ROS_SOURCE_LINE" >> ~/.bashrc
     echo "Added ROS2 sourcing to ~/.bashrc"
 fi
-source /opt/ros/humble/setup.bash
+source /opt/ros/${ROSDISTRO_DETECTED}/setup.bash
 
 cd "$DIR"
 
